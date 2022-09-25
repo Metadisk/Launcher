@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Launcher</string>
+    <string name="home_button_icon">home button icon</string>
+    <string name="title">Current Apps on your device</string>
+    <string name="current_app_name">App Name</string>
+    <string name="app_package_name">App Package Name</string>
+    <string name="app_icon">App Icon</string>
+    <string name="show_apps">Show apps</string>
+</resources>
