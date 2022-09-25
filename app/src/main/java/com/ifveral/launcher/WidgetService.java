@@ -121,9 +121,9 @@ public final class WidgetService extends RemoteViewsService {
             // locking up the widget.
 
             mWidgetItems.clear();
-            WidgetItem item = new WidgetItem("city: ", "Beijing: ",
-                    "country","China","temperature","5",
-                    "description","Sunny intervals and light winds");
+            WidgetItem item = new WidgetItem("City: ", "Beijing: ",
+                    "Country:","China","Temperature:","5",
+                    "Description:","Sunny intervals and light winds");
             mWidgetItems.add(item);
 
         }

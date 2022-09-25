@@ -4,13 +4,15 @@
     android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
-    android:orientation="vertical">
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    android:padding="16sp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:paddingTop="16dp">
 
         <TextView
             android:id="@+id/city"
@@ -18,8 +20,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="top"
             android:layout_weight="1"
+            android:textStyle="bold"
             android:gravity="start"
-            android:textSize="11sp"
+            android:textSize="16sp"
             tools:text="My name" />
 
         <TextView
@@ -28,13 +31,14 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="end"
-            android:textSize="11sp"
+            android:textSize="16sp"
             tools:text="My name" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="16dp"
         android:orientation="horizontal">
 
         <TextView
@@ -43,8 +47,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="top"
             android:layout_weight="1"
+            android:textStyle="bold"
             android:gravity="start"
-            android:textSize="11sp"
+            android:textSize="16sp"
             tools:text="My name" />
 
         <TextView
@@ -53,13 +58,14 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="end"
-            android:textSize="11sp"
+            android:textSize="16sp"
             tools:text="My name" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="16dp"
         android:orientation="horizontal">
 
         <TextView
@@ -68,8 +74,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="top"
             android:layout_weight="1"
+            android:textStyle="bold"
             android:gravity="left"
-            android:textSize="11sp"
+            android:textSize="16sp"
             tools:ignore="RtlHardcoded"
             tools:text="My name" />
 
@@ -79,13 +86,14 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="end"
-            android:textSize="11sp"
+            android:textSize="16sp"
             tools:text="My name" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="16dp"
         android:orientation="horizontal">
 
         <TextView
@@ -93,9 +101,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="top"
+            android:textStyle="bold"
             android:layout_weight="1"
             android:gravity="start"
-            android:textSize="11sp"
+            android:textSize="16sp"
             tools:text="My name" />
 
         <TextView
@@ -104,7 +113,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="end"
-            android:textSize="11sp"
+            android:textSize="16sp"
             tools:text="My name" />
     </LinearLayout>
 
