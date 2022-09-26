@@ -8,4 +8,5 @@
     <string name="show_apps">Show apps</string>
     <string name="weather_informations">Weather Informations</string>
     <string name="battery">Battery:</string>
+    <string name="time">Time:</string>
 </resources>

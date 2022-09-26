@@ -5,9 +5,20 @@ import android.content.Intent;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedInputStream;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Random;
+import java.util.Map;
 
 public final class WidgetService extends RemoteViewsService {
 
@@ -18,9 +29,6 @@ public final class WidgetService extends RemoteViewsService {
 
     public static final class WidgetItem {
 
-        /**
-         * Label to display in the list.
-         */
         public final String city;
         public final String city_detail;
         public final String country;
@@ -113,19 +121,57 @@ public final class WidgetService extends RemoteViewsService {
 
         @Override
         public void onDataSetChanged() {
-            // This is triggered when you call AppWidgetManager notifyAppWidgetViewDataChanged
-            // on the collection view corresponding to this factory. You can do heaving lifting in
-            // here, synchronously. For example, if you need to process an image, fetch something
-            // from the network, etc., it is ok to do it here, synchronously. The widget will remain
-            // in its current state while work is being done here, so you don't need to worry about
-            // locking up the widget.
-
             mWidgetItems.clear();
-            WidgetItem item = new WidgetItem("City: ", "Beijing: ",
-                    "Country:","China","Temperature:","5",
-                    "Description:","Sunny intervals and light winds");
-            mWidgetItems.add(item);
+            String result = null;
+            String[] cityName = {"beijing", "berlin", "cardiff", "edinburgh", "london", "nottingham"};
+            for (String cty : cityName) {
+                try {
+                    URL url = new URL("https://weather.bfsah.com/" + cty);
+                    HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
 
+                    InputStream in = new BufferedInputStream(urlConnection.getInputStream());
+                    result = inputStreamToString(in);
+                    try {
+                        JSONObject jsonObject = new JSONObject(result);
+                        String city = jsonObject.getString("city");
+                        String country = jsonObject.getString("country");
+                        String temperature = jsonObject.getString("temperature");
+                        String description = jsonObject.getString("description");
+
+                        WidgetItem item = new WidgetItem("City: ", city,
+                                "Country:", country, "Temperature:", temperature,
+                                "Description:", description);
+                        mWidgetItems.add(item);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+
+                }
+            }
+
+        }
+
+        private String inputStreamToString(InputStream is) {
+            String rLine = "";
+            StringBuilder answer = new StringBuilder();
+
+            InputStreamReader isr = new InputStreamReader(is);
+
+            BufferedReader rd = new BufferedReader(isr);
+
+            try {
+                while ((rLine = rd.readLine()) != null) {
+                    answer.append(rLine);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return answer.toString();
         }
     }
 }
+
+
